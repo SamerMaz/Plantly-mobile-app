@@ -18,7 +18,7 @@ type PlantsState = {
   addPlant: (
     name: string,
     wateringFrequencyDays: number,
-    imageUri?: string
+    imageUri?: string,
   ) => Promise<void>;
   removePlant: (plantId: string) => void;
   waterPlant: (plantId: string) => void;
@@ -32,7 +32,7 @@ export const usePlantStore = create(
       addPlant: async (
         name: string,
         wateringFrequencyDays: number,
-        imageUri?: string
+        imageUri?: string,
       ) => {
         const savedImageUri =
           FileSystem.documentDirectory +
@@ -89,6 +89,6 @@ export const usePlantStore = create(
     {
       name: "plantly-plants-store",
       storage: createJSONStorage(() => AsyncStorage),
-    }
-  )
+    },
+  ),
 );

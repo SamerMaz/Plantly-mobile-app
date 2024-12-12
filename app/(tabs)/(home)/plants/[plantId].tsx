@@ -5,7 +5,14 @@ import { theme } from "@/theme";
 import { differenceInCalendarDays, format } from "date-fns";
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import { useEffect } from "react";
-import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  Alert,
+  Linking,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 const fullDateFormat = "LLL d yyyy, h:mm aaa";
 
@@ -16,10 +23,18 @@ export default function PlantScreen() {
   const params = useLocalSearchParams();
   const plantId = params.plantId;
   const plant = usePlantStore((state) =>
-    state.plants.find((plant) => String(plant.id) === plantId)
+    state.plants.find((plant) => String(plant.id) === plantId),
   );
 
   const navigation = useNavigation();
+
+  useEffect(() => {
+    const getInitial = async () => {
+      const url = await Linking.getInitialURL();
+      console.log(url);
+    };
+    getInitial();
+  }, []);
 
   useEffect(() => {
     navigation.setOptions({
@@ -51,7 +66,7 @@ export default function PlantScreen() {
           style: "destructive",
         },
         { text: "Cancel", style: "cancel" },
-      ]
+      ],
     );
   };
 
