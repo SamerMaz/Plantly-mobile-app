@@ -1,7 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import uuid from "react-native-uuid";
 import * as FileSystem from "expo-file-system";
 
 export type PlantType = {
@@ -50,8 +49,7 @@ export const usePlantStore = create(
             nextId: state.nextId + 1,
             plants: [
               {
-                // id: String(state.nextId),
-                id: uuid.v4(),
+                id: String(state.nextId),
                 name,
                 wateringFrequencyDays,
                 imageUri: imageUri ? savedImageUri : undefined,

@@ -42,6 +42,14 @@ export default function PlantScreen() {
     });
   }, []);
 
+  useEffect(() => {
+    if (params.action === "Water") {
+      if (typeof plantId === "string") {
+        waterPlant(plantId);
+      }
+    }
+  }, []);
+
   const handleWaterPlant = () => {
     if (typeof plantId === "string") {
       waterPlant(plantId);
