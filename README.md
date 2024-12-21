@@ -1,6 +1,7 @@
 # Plantly App 🌱
 
 A plant watering app
+The app will have an onboarding step where after which you can add plants to look after.
 
 ## Getting Started
 
